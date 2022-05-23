@@ -37,3 +37,4 @@ if r.status_code == 200:
     for p in doc["results"]:
         print (str(p["name"])+" - "+str(p["rating"]))
 
+#https://api.rawg.io/docs/
