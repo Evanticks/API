@@ -1,6 +1,6 @@
 import requests
 import os
-
+import json
 #Busca los juegos de Nintendo y Playstation del último año y pon su nombre y notas de metacritic.
 URL_BASE="https://api.rawg.io/api/"
 key=os.environ["exportkey"]
@@ -8,9 +8,9 @@ payload = {'key':key,'dates':'2022-01-01,2022-05-16','platforms':'18,7'}
 r=requests.get(URL_BASE+'games',params=payload)
 if r.status_code == 200:
     doc=r.json()
-    #print(json.dumps(doc, indent=1))
-    for p in doc["results"]:
-        print (str(p["name"])+" - "+str(p["metacritic"]))
+    print(json.dumps(doc, indent=1))
+    #for p in doc["results"]:
+    #    print (str(p["name"])+" - "+str(p["metacritic"]))
 
 
 
