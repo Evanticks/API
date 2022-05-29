@@ -53,10 +53,6 @@ def lista_juegos():
                     juegos.append(diccionario)
                     print(diccionario)
                     return render_template("lista_juegos.html",juegos=juegos)
-                else:
-                    return abort (404)
-        else:
-            return abort (404)
     if texto3 != None:
         payload = {'key':key,'search':str(texto3)}
         r=requests.get(URL_BASE+'developers',params=payload)
@@ -71,12 +67,6 @@ def lista_juegos():
                     juegos.append(diccionario)
                     print(diccionario)
                     return render_template("desarrollador.html",juegos=juegos,texto3=texto3)
-                else:
-                    return abort (404)
-        else:
-            return abort (404)
-    else:
-        return abort (404)
 @app.route('/juego/<slug>')
 def juego(slug):
     URL_BASE="https://api.newscatcherapi.com/v2/search"
