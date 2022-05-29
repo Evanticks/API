@@ -34,7 +34,7 @@ def lista_juegos():
                 nombre=str(dato.get("nombre"))
                 diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
                 juegos.append(diccionario)
-                return render_template("lista_juegos.html",juegos=juegos,texto=texto)
+            return render_template("lista_juegos.html",juegos=juegos,texto=texto)
     if texto2 != None:
         payload = {'key':key,'search':str(texto2)}
         print(payload)
@@ -48,7 +48,7 @@ def lista_juegos():
                     diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
                     juegos.append(diccionario)
                     print(diccionario)
-                    return render_template("lista_juegos.html",juegos=juegos)
+            return render_template("lista_juegos.html",juegos=juegos)
     if texto3 != None:
         payload = {'key':key,'search':str(texto3)}
         r=requests.get(URL_BASE+'developers',params=payload)
@@ -62,7 +62,7 @@ def lista_juegos():
                     diccionario={"name":dato.get("name"),"id":dato.get("id"),"slug":dato.get("slug")}
                     juegos.append(diccionario)
                     print(diccionario)
-                    return render_template("desarrollador.html",juegos=juegos,texto3=texto3)
+            return render_template("desarrollador.html",juegos=juegos,texto3=texto3)
 @app.route('/juego/<slug>')
 def juego(slug):
     URL_BASE="https://api.newscatcherapi.com/v2/search"
