@@ -51,8 +51,8 @@ body {
   font: 32px "Times new roman", serif;
   font-weight: normal;
   position: absolute;
-  left: 220px;
   top: 35px;
+  left: 155px;
   color:  #c5d0dc;
   padding: 0 0 0 0.7em;
   margin: -1em 0 0 0;
@@ -96,8 +96,8 @@ body {
   padding-top: 0px;
   display: block;
   margin-top:50px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0px;
+  padding-right: 100px;
 }
 #nav ul {
   margin: 0;
@@ -130,6 +130,9 @@ body {
 
 #content {
   padding-left: 20px;
+  padding-top: 4rem;
+  text-align:center;
+  margin: 20px;
 }
 #content h2 {
   font: 24px "Times new roman", serif;
@@ -174,6 +177,9 @@ body {
   color: #323789;
   text-decoration:underline;
 }
+
+
+
 #gallery {
   margin-top: 14px;
 }
@@ -291,4 +297,5 @@ body {
   text-align: center;
   color:  #d6dbdf;
   padding: 14px;
+  margin: 23px;
 }

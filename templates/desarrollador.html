@@ -8,21 +8,17 @@
 <body>
 <div id="wrapper">
   <div id="header">
-    <h1>JUEGOS MÁS FAMOSOS {{texto}} HASTA HOY.</h1>
+    <h1>Desarrollador {{texto3}} </h1>
     <div id="nav">
     </div>
   </div>
   <div id="content">
       {% for elem in juegos -%}
-      
           <td><h1>NOMBRE: {{elem.get("name")}}<br></h1></td>
-          <td><h1>NOTA: {{elem.get("metacritic")}}<br></h1></td>
-          <a href="juego/{{elem.get("slug")}}"><img src={{elem.get("background_image")}} width="800" height="400"></a>
-          
-      
+          <td><h1>ID: {{elem.get("id")}}<br></h1></td>
+          <td><h1 id="footer"><a href="juego/{{elem.get("slug")}}">Noticia del Desarrollador.</a></h1></td>
       {% endfor %}
   </div>
-  <div id="footer"> Puedes acceder a los detalles del juego clickando en las imágenes. <a href="formulario"></a></div>
 </div>
 </body>
 </html>

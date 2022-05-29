@@ -3,12 +3,10 @@
     {% block content %}
     <h1>
        <ol>
-            <li>Juego: {{dato.get("nombre")}}</li>
-            <li>{{dato.get("sistema")}}</li>
-            <li>{{dato.get("distribuidor")}}</li>
-            <li>{{dato.get("desarrollador")}}</li>
-            <li>{{dato.get("categoria")}}</li>
-            <li>{{dato.get("año")}}</li>
+        {% for juego in juegos -%}
+            <li>Juego: {{juego.get("title")}}</li>
+            <li>Noticia: {{juego.get("summary")}}</li>
+        {% endfor %}
        </ol>
     </h1>
     {% endblock %}
