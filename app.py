@@ -35,6 +35,8 @@ def lista_juegos():
                 diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
                 juegos.append(diccionario)
             return render_template("lista_juegos.html",juegos=juegos,texto=texto)
+        else:
+            return abort (404)
     if texto2 != None:
         payload = {'key':key,'search':str(texto2)}
         print(payload)
@@ -49,6 +51,8 @@ def lista_juegos():
                     juegos.append(diccionario)
                     print(diccionario)
             return render_template("lista_juegos.html",juegos=juegos)
+        else:
+            return abort (404)
     if texto3 != None:
         payload = {'key':key,'search':str(texto3)}
         r=requests.get(URL_BASE+'developers',params=payload)
@@ -62,7 +66,11 @@ def lista_juegos():
                     diccionario={"name":dato.get("name"),"id":dato.get("id"),"slug":dato.get("slug")}
                     juegos.append(diccionario)
                     print(diccionario)
-            return render_template("desarrollador.html",juegos=juegos,texto3=texto3)
+            return render_template("desarrollador.html",juegos=juegos,texto3=texto3)    
+        else:
+            return abort (404)
+    else:
+        return abort (404)
 @app.route('/juego/<slug>')
 def juego(slug):
     URL_BASE="https://api.newscatcherapi.com/v2/search"
@@ -84,7 +92,7 @@ def juego(slug):
         #print(json.dumps(doc, indent=1))
         #for p in doc["results"]:
         #    print (str(p["name"])+" - "+str(p["metacritic"]))
-                return render_template("juego.html",juegos=juegos)
+        return render_template("juego.html",juegos=juegos)
 
 
 #https://api.rawg.io/docs/
