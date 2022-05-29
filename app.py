@@ -35,10 +35,6 @@ def lista_juegos():
                 diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
                 juegos.append(diccionario)
                 return render_template("lista_juegos.html",juegos=juegos,texto=texto)
-            else:
-                return abort (404)
-        else:
-            return abort (404)
     if texto2 != None:
         payload = {'key':key,'search':str(texto2)}
         print(payload)
