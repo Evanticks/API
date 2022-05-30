@@ -20,8 +20,7 @@ def lista_juegos():
     texto=request.form.get("texto")
     texto2=request.form.get("texto2")
     texto3=request.form.get("texto3")
-    print(texto3)
-    if texto != None:
+    if texto != None and texto != "":
         hoy=date.today()
         fecha=str(texto)+','+str(hoy)
         payload = {'key':key,'dates':fecha,'platforms':'18,7'}
@@ -37,9 +36,8 @@ def lista_juegos():
             return render_template("lista_juegos.html",juegos=juegos,texto=texto)
         else:
             return abort (404)
-    if texto2 != None:
+    if texto3 != None and texto2 != "":
         payload = {'key':key,'search':str(texto2)}
-        print(payload)
         r=requests.get(URL_BASE+'games',params=payload)
         if r.status_code == 200:
             doc=r.json()
@@ -49,11 +47,10 @@ def lista_juegos():
                 if nombre.startswith(texto2):
                     diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
                     juegos.append(diccionario)
-                    print(diccionario)
             return render_template("lista_juegos.html",juegos=juegos)
         else:
             return abort (404)
-    if texto3 != None:
+    if texto3 != None and texto3 != "":
         payload = {'key':key,'search':str(texto3)}
         r=requests.get(URL_BASE+'developers',params=payload)
         if r.status_code == 200:
@@ -89,6 +86,8 @@ def juego(slug):
                 diccionario={"title":dato.get("title"),"summary":dato.get("summary")}
                 print(diccionario)
                 juegos.append(diccionario)
+            else:
+                return abort (404)
         #print(json.dumps(doc, indent=1))
         #for p in doc["results"]:
         #    print (str(p["name"])+" - "+str(p["metacritic"]))
