@@ -20,38 +20,45 @@ def lista_juegos():
     texto=request.form.get("texto")
     texto2=request.form.get("texto2")
     texto3=request.form.get("texto3")
-    if texto != None:
+    #if texto != None:
+    #    hoy=date.today()
+    #    fecha=str(texto)+','+str(hoy)
+    #    payload = {'key':key,'dates':fecha,'platforms':'18,7'}
+    #    r=requests.get(URL_BASE+'games',params=payload)
+    #    if r.status_code == 200:
+    #        doc=r.json()
+    #        juegos=[]
+#   #         texto=request.form.get("texto")
+    #        for dato in doc.get("results"):
+    #            nombre=str(dato.get("nombre"))
+    #            diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
+    #            juegos.append(diccionario)
+    #        if nombre == None:
+    #                return render_template("lista_juegos_error.html")
+    #        return render_template("lista_juegos.html",juegos=juegos,texto=texto)
+    if texto != "":
         hoy=date.today()
         fecha=str(texto)+','+str(hoy)
-        payload = {'key':key,'dates':fecha,'platforms':'18,7'}
-        r=requests.get(URL_BASE+'games',params=payload)
-        if r.status_code == 200:
-            doc=r.json()
-            juegos=[]
-#            texto=request.form.get("texto")
-            for dato in doc.get("results"):
-                nombre=str(dato.get("nombre"))
-                diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
-                juegos.append(diccionario)
-            return render_template("lista_juegos.html",juegos=juegos,texto=texto)
-        else:
-            return abort (404)
-    if texto2 != None:
+        payload = {'key':key,'search':str(texto2),'dates':fecha}
+    else:
         payload = {'key':key,'search':str(texto2)}
-        print(payload)
-        r=requests.get(URL_BASE+'games',params=payload)
-        if r.status_code == 200:
-            doc=r.json()
-            juegos=[]
-            for dato in doc.get("results"):
-                nombre=str(dato.get("name"))
-                if nombre.startswith(texto2):
-                    diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug")}
-                    juegos.append(diccionario)
-                    print(diccionario)
+    r=requests.get(URL_BASE+'games',params=payload)
+    print(r)
+    print(type(texto))
+    if r.status_code == 200:
+        doc=r.json()
+        juegos=[]
+        error=False
+        for dato in doc.get("results"):
+            nombre=str(dato.get("name"))
+            if nombre.startswith(texto2):
+                error=True
+                diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug"),"released":dato.get("released")}
+                juegos.append(diccionario)
+        if error==True:
             return render_template("lista_juegos.html",juegos=juegos)
         else:
-            return abort (404)
+            return render_template("lista_juegos_error.html")
     if texto3 != None:
         payload = {'key':key,'search':str(texto3)}
         r=requests.get(URL_BASE+'developers',params=payload)
@@ -63,11 +70,9 @@ def lista_juegos():
                 if nombre.startswith(texto3):
                     diccionario={"name":dato.get("name"),"id":dato.get("id"),"slug":dato.get("slug")}
                     juegos.append(diccionario)
+                else:
+                    return render_template("lista_juegos_error.html")
             return render_template("desarrollador.html",juegos=juegos,texto3=texto3)    
-        else:
-            return abort (404)
-    else:
-        return abort (404)
 @app.route('/juego/<slug>')
 def juego(slug):
     URL_BASE="https://api.newscatcherapi.com/v2/search"
@@ -77,19 +82,22 @@ def juego(slug):
     r=requests.get(URL_BASE,params=payload,headers=headers)
     if r.status_code == 200:
         doc=r.json()
-        print(doc)
         juegos=[]
+        error=False
         for dato in doc.get("articles"):
             #titular=str(dato.get("title"))
             idioma=str(dato.get("language"))
             if idioma == ("es"):
+                error=True
                 diccionario={"title":dato.get("title"),"summary":dato.get("summary")}
-                print(diccionario)
                 juegos.append(diccionario)
         #print(json.dumps(doc, indent=1))
         #for p in doc["results"]:
         #    print (str(p["name"])+" - "+str(p["metacritic"]))
-        return render_template("juego.html",juegos=juegos)
+        if error == True:
+            return render_template("juego.html",juegos=juegos)
+        else:
+            return render_template("juego_error.html")
 
 
 #https://api.rawg.io/docs/

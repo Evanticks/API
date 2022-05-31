@@ -1,18 +1,11 @@
 {% extends "base.html" %}
 <title>{% block title %}Lista de juegos.{% endblock %}</title>
     {% block content %}
-    <div id="footer"> En el siguiente buscador puedes poner la fecha anterior a la de hoy para ver los juegos más famosos. <a href="formulario"></a></div>
+    <div id="footer"> En el siguiente buscador puedes poner la fecha anterior a la de hoy para ver los juegos más famosos y/o filtrar por nombre del juego. <a href="formulario"></a></div>
       <form action="/lista_juegos" method="post">
           <input style="font-size: 2rem" type="date" name="texto" placeholder="Fecha hasta hoy">
+          <input style="font-size: 2rem" type="text" name="texto2" placeholder="Nombre del juego" size="12">
           <input style="font-size: 2rem" type="submit" value="Buscar fecha">
-      </form>
-      <div id="footer"> En el siguiente buscador puedes filtrar por nombre del juego. <a href="formulario"></a></div>
-      
-      
-      
-      <form action="/lista_juegos" method="post">
-        <input style="font-size: 2rem" type="text" name="texto2" placeholder="Nombre del juego" size="12">
-        <input style="font-size: 2rem" type="submit" value="Buscar juego">
       </form>
       
       <div id="footer"> En la siguiente lista puedes filtrar por Desarrollador. <a href="formulario"></a></div>
