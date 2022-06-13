@@ -1,14 +1,20 @@
-{% extends "base.html" %}
-<title>{% block title %}Datos de juego.{% endblock %}</title>
-    {% block content %}
-    <h1>
-       NO HAY NOTICIAS CON ESOS PARÁMETROS.
-    </h1>
-    {% endblock %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="../static/style.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <h1>NO EXISTEN NOTICIAS CON EL TÍTULO DE ESTE JUEGO.</h1>
+    <div id="nav">
+    </div>
   </div>
-  {% block contenido %}
+  <div id="content">
+  </div>
   <div id="footer"><a href="/juegos">Pulsa aquí para volver. </a></div>
-  {% endblock %}
 </div>
 </body>
 </html>

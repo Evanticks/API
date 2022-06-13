@@ -43,8 +43,6 @@ def lista_juegos():
     else:
         payload = {'key':key,'search':str(texto2)}
     r=requests.get(URL_BASE+'games',params=payload)
-    print(r)
-    print(type(texto))
     if r.status_code == 200:
         doc=r.json()
         juegos=[]
@@ -84,6 +82,7 @@ def juego(slug):
         doc=r.json()
         juegos=[]
         error=False
+
         for dato in doc.get("articles"):
             #titular=str(dato.get("title"))
             idioma=str(dato.get("language"))

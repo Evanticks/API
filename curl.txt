@@ -6,7 +6,7 @@ curl -XGET 'https://api.newscatcherapi.com/v2/search?q=Kirby-and-the-Forgotten-L
 
 export x-api-key='35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4'
 export exportkey2='x-api-key:35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4'
-
+                    35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4
 DATABASE JUEGOS
 
 eabf4ca342a54bc885e39ee657b14523
