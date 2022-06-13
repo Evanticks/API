@@ -1,12 +1,12 @@
 DATABASE NOTICIAS
 
-curl -XGET 'https://api.newscatcherapi.com/v2/search?q=kirby-and-the-forgotten-land' -H 'x-api-key:35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4' | json_pp
+curl -XGET 'https://api.newscatcherapi.com/v2/search?q=kirby-and-the-forgotten-land' -H 'x-api-key:5SPXb97IXaOFytlWwwrE96WloJPLphe0gZaWOkOpDHg' | json_pp
 curl -XGET 'https://api.newscatcherapi.com/v2/search?q=Kirby-and-the-Forgotten-Land' -H exportkey2 | json_pp
             https://api.newscatcherapi.com/v2/search/?q=kirby-and-the-forgotten-land
 
 export x-api-key='35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4'
 export exportkey2='x-api-key:35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4'
-                    35ZIJn4YAatl7HGCZvL3yk917rLven6Pw4drVVM5Yy4
+                    5SPXb97IXaOFytlWwwrE96WloJPLphe0gZaWOkOpDHg
 DATABASE JUEGOS
 
 eabf4ca342a54bc885e39ee657b14523

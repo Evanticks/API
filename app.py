@@ -101,34 +101,36 @@ def lista_juegos():
             return render_template("lista_juegos_error.html")
     else:
         return render_template("lista_juegos_error.html")
-@app.route('/juego/<slug>')
-def juego(slug):
+@app.route('/juego/<name>')
+def juego(name):
     URL_BASE="https://api.newscatcherapi.com/v2/search"
     key=os.environ["exportkey2"]
     headers= {'x-api-key': key}
-    payload = {'q':slug}
+    payload = {'q':name,"lang":"es"}
     r=requests.get(URL_BASE,params=payload,headers=headers)
+    print(r)
     if r.status_code == 200:
         doc=r.json()
+        print(doc)
         juegos=[]
         error=False
-
-        for dato in doc.get("articles"):
-            #titular=str(dato.get("title"))
-            idioma=str(dato.get("language"))
-            if idioma == ("es"):
-                error=True
+        if doc.get("articles"):
+            for dato in doc.get("articles"):
+                #titular=str(dato.get("title"))
                 diccionario={"title":dato.get("title"),"summary":dato.get("summary")}
                 juegos.append(diccionario)
+        else:
+            return render_template("lista_juegos_error.html")
         #print(json.dumps(doc, indent=1))
         #for p in doc["results"]:
         #    print (str(p["name"])+" - "+str(p["metacritic"]))
-        if error == True:
+        print(diccionario)
+        if diccionario:
             return render_template("juego.html",juegos=juegos)
         else:
-            return render_template("juego_error.html")
+            return render_template("lista_juegos_error.html")
     else:
-            return render_template("juego_error.html")
+        return render_template("lista_juegos_error.html")
 
 #https://api.rawg.io/docs/
 port=os.environ["PORT"]
