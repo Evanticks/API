@@ -1,6 +1,10 @@
 {% extends "base.html" %}
-<title>Datos de juego.</title>
-    <h1>NO HAY JUEGOS CON ESOS PARÁMETROS.</h1>
+<title>{% block title %}Datos de juego.{% endblock %}</title>
+    {% block content %}
+    <h1>
+       NO HAY JUEGOS CON ESOS PARÁMETROS.
+    </h1>
+    {% endblock %}
   </div>
   {% block contenido %}
   <div id="footer"><a href="/juegos">Pulsa aquí para volver. </a></div>

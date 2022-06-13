@@ -118,7 +118,7 @@ def juego(name):
                 diccionario={"title":dato.get("title"),"summary":dato.get("summary")}
                 juegos.append(diccionario)
         else:
-            return render_template("lista_juegos_error.html")
+            return render_template("juego_error.html")
         #print(json.dumps(doc, indent=1))
         #for p in doc["results"]:
         #    print (str(p["name"])+" - "+str(p["metacritic"]))
