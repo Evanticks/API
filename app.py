@@ -130,6 +130,6 @@ def juego(name):
         return render_template("juego_error.html")
 
 #https://api.rawg.io/docs/
-#port=os.environ["PORT"]
-#app.run('0.0.0.0',int(port),debug=False)
-app.run("0.0.0.0",5000,debug=True)
+port=os.environ["PORT"]
+app.run('0.0.0.0',int(port),debug=False)
+#app.run("0.0.0.0",5000,debug=True)
