@@ -56,7 +56,6 @@ def lista_juegos():
                     error=True
                     diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug"),"released":dato.get("released")}
                     juegos.append(diccionario)            
-        print(diccionario)
         if error==True:
             return render_template("lista_juegos.html",juegos=juegos)
         else:
@@ -76,7 +75,6 @@ def lista_juegos():
                     error=True
                     diccionario={"name":dato.get("name"),"metacritic":dato.get("metacritic"),"background_image":dato.get("background_image"),"slug":dato.get("slug"),"released":dato.get("released")}
                     juegos.append(diccionario)            
-        print(diccionario)
         if error==True:
             return render_template("lista_juegos.html",juegos=juegos)
         else:
@@ -124,15 +122,14 @@ def juego(name):
         #print(json.dumps(doc, indent=1))
         #for p in doc["results"]:
         #    print (str(p["name"])+" - "+str(p["metacritic"]))
-        print(diccionario)
         if diccionario:
             return render_template("juego.html",juegos=juegos)
         else:
-            return render_template("lista_juegos_error.html")
+            return render_template("juego_error.html")
     else:
-        return render_template("lista_juegos_error.html")
+        return render_template("juego_error.html")
 
 #https://api.rawg.io/docs/
-port=os.environ["PORT"]
-app.run('0.0.0.0',int(port),debug=False)
-#app.run("0.0.0.0",5000,debug=True)
+#port=os.environ["PORT"]
+#app.run('0.0.0.0',int(port),debug=False)
+app.run("0.0.0.0",5000,debug=True)
